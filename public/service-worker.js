@@ -17,7 +17,7 @@ const DATA_CACHE_NAME = "pwabudgetapp-data-cache-v1";
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("Your files were cached");
+      console.log("Your files were pre-cached");
       return cache.addAll(FILES_TO_CACHE);
     })
   );
