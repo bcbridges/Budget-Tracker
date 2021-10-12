@@ -1,7 +1,7 @@
-let db;
+const db;
 
 // get connection to the database defn in server.js
-const request = window.indexedDB.open("budget-tracker", 1);
+const request = indexedDB.open("budget-tracker", 1);
 
 request.onupgradeneeded = function (event) {
   const db = event.target.result;
@@ -11,7 +11,7 @@ request.onupgradeneeded = function (event) {
 request.onsuccess = function (event) {
   db = event.target.result;
 
-  if (navigator.online) {
+  if (navigator.onLine) {
     updateTransaction();
   }
 };
@@ -37,7 +37,7 @@ function updateTransaction() {
 
   getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
-      fetch("/api/transaction/bulk", {
+      fetch("/api/transaction", {
         method: "POST",
         body: JSON.stringify(getAll.result),
         headers: {
@@ -51,6 +51,7 @@ function updateTransaction() {
           const pending = transaction.objectStore("pending");
           pending.clear();
           location.reload();
+          alert("All transactions have been saved.")
         });
     }
   };
