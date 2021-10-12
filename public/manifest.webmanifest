@@ -1,6 +1,6 @@
 {
   "name": "PWA-Budget-App",
-  "short-name": "Budget",
+  "short_name": "Budget",
   "start_url": "/",
   "background_color": "#097969",
   "theme_color": "#097969",
