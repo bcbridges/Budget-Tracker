@@ -59,11 +59,9 @@
     <script src="indexedDB.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("service-worker.js")
-            .then(console.log("service worker found"));
-        });
+        navigator.serviceWorker
+          .register("./service-worker.js")
+          .then(console.log("service worker found"));
       }
     </script>
   </body>
