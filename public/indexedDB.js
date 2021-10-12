@@ -1,7 +1,7 @@
-const db;
+let db;
 
 // get connection to the database defn in server.js
-const request = indexedDB.open("budget-tracker", 1);
+const request = window.indexedDB.open("budget-tracker", 1);
 
 request.onupgradeneeded = function (event) {
   const db = event.target.result;
@@ -51,7 +51,7 @@ function updateTransaction() {
           const pending = transaction.objectStore("pending");
           pending.clear();
           location.reload();
-          alert("All transactions have been saved.")
+          alert("All transactions have been saved.");
         });
     }
   };
